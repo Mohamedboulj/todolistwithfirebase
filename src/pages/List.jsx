@@ -17,7 +17,7 @@ export default function List() {
   //delete task
   function handleDelete(id) {
     const todoRef = doc(db, "todo", id);
-    alert('Are you sure you wanna delete task?')
+    alert("Are you sure you wanna delete task?");
     deleteDoc(todoRef);
   }
   async function handleFinished(id) {
@@ -36,7 +36,13 @@ export default function List() {
               <div className="card shadow-sm rounded my-2" key={key}>
                 <div className="card-body">
                   <div className="d-flex justify-content-between">
-                    <h5 style={{ textDecoration : todo.finished ? "line-through" : ""}}>{todo.task}</h5>
+                    <h5
+                      style={{
+                        textDecoration: todo.finished ? "line-through" : "",
+                      }}
+                    >
+                      {todo.task}
+                    </h5>
                     <div className="buttons">
                       {todo.finished ? null : (
                         <button
