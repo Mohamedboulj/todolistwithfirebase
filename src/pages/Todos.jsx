@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {addDoc} from "firebase/firestore";
+import {addDoc,collection} from "firebase/firestore";
+import {db} from "../firebase.config";
 export default function Todos() {
   const [tache, setTache] = useState("");
 
@@ -7,13 +8,18 @@ export default function Todos() {
     e.preventDefault();
     if (tache.length > 1) {
         //store in db
-      addDoc
+      addDoc(collection(db,'todo'),{
+      task:tache,
+      finished:false
+      });
+      setTache("");
+
     } else {
       alert("entrer une valeur");
     }
   }
   function handleChange(e) {
-    setTache(e.target.value);
+    setTache(e.target.value); 
   }
   return (
     <>
